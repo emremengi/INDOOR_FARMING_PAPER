@@ -1,0 +1,6 @@
+BROKEN-OPTIMA.dat filter=lfs diff=lfs merge=lfs -text
+GEN-STARTING-VALUES.dat filter=lfs diff=lfs merge=lfs -text
+GENETICOUTPUT.dat filter=lfs diff=lfs merge=lfs -text
+LAPLACIAN-SMOOTHED-REAL3D.dat filter=lfs diff=lfs merge=lfs -text
+OPTIMA.dat filter=lfs diff=lfs merge=lfs -text
+PATH.dat filter=lfs diff=lfs merge=lfs -text
