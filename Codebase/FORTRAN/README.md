@@ -2,3 +2,6 @@ To run the fortran code for model by iteself (not the file with the GA), run the
 $ source /opt/intel/oneapi/setvars.sh intel64
 $ ifort {filename} -lm -03 -o {object filename}
 $ ./{object filename}
+
+PATH.dat files should be ignored when pushing to main branch
+Upload to Google Drive instead
