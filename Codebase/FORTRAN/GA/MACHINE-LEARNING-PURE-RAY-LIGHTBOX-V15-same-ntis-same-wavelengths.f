@@ -264,8 +264,8 @@ C   FOR A SINGLE RUN: NO OPTIMIZATION: OVERRIDE=1,(IF MOVIE WANTED),PRINTSCREEN=
 C   FOR OPTIMIZATION: OVERRIDE=0,PRINTSCREEN=0
 CCCCCCCCCCCCCCCCCCCCCCCC
 
-         PRINTSCREEN=1
-         OVERRIDE=1
+         PRINTSCREEN=0
+         OVERRIDE=0
 c         STOREDATA=0
 
 CCCCCCCCCCCCCCC
@@ -793,7 +793,7 @@ CCCCCCCCCCCCCCCCCCC
        ACTIVE(35)=1
        ACTIVE(36)=1
 
-       WRITE(*,*)'SURVIVAL OF THE FITTEST ALGORITHM'
+C WRITE(*,*)'SURVIVAL OF THE FITTEST ALGORITHM'
 
       DESPOTENTIAL=10000000000.0D0
 
@@ -949,7 +949,7 @@ CCCCCCCCCCCCCCCCCCC
        POPULATION=1
 c       RANDSEED=201
        STOPTOL=0.99D0*DESPOTENTIAL
-       WRITE(*,*)'OVERRIDING THE SEARCH'
+C WRITE(*,*)'OVERRIDING THE SEARCH'
 
          TOP=1
          TOP2=1
@@ -994,35 +994,35 @@ CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 C       PRINTING COMMANDS (FOR UP TO 25 DESIGN VARIABLES)
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 
-        WRITE(*,*)'***********************************'
-        WRITE(*,*)POPULATION,'  GENES IN THE POOL'
-        WRITE(*,*)'***********************************'
-        WRITE(*,*)'THE ORIGINAL GENETIC STRINGS-FIRST SET:'
-        WRITE(*,*)'***********************************'
+C        WRITE(*,*)'***********************************'
+C        WRITE(*,*)POPULATION,'  GENES IN THE POOL'
+C        WRITE(*,*)'***********************************'
+C        WRITE(*,*)'THE ORIGINAL GENETIC STRINGS-FIRST SET:'
+C        WRITE(*,*)'***********************************'
         DO I1=1,TOP3
-         WRITE(*,134)I1,STRING(I1,1),STRING(I1,2),STRING(I1,3),
+        WRITE(*,134)I1,STRING(I1,1),STRING(I1,2),STRING(I1,3),
      $STRING(I1,4),STRING(I1,5),STRING(I1,6),STRING(I1,7),STRING(I1,8),
      $STRING(I1,9),STRING(I1,10)
         ENDDO
-        WRITE(*,*)'***********************************'
-        WRITE(*,*)'THE ORIGINAL GENETIC STRINGS-SECOND SET:'
-        WRITE(*,*)'***********************************'
+C        WRITE(*,*)'***********************************'
+C        WRITE(*,*)'THE ORIGINAL GENETIC STRINGS-SECOND SET:'
+C        WRITE(*,*)'***********************************'
         DO I1=1,TOP3
          WRITE(*,135)I1,STRING(I1,11),STRING(I1,12),
      $STRING(I1,13),STRING(I1,14),STRING(I1,15),STRING(I1,16),
      $STRING(I1,17),STRING(I1,18),STRING(I1,19),STRING(I1,20)
         ENDDO
-        WRITE(*,*)'***********************************'
-        WRITE(*,*)'THE ORIGINAL GENETIC STRINGS-THIRD SET:'
-        WRITE(*,*)'***********************************'
+C        WRITE(*,*)'***********************************'
+C        WRITE(*,*)'THE ORIGINAL GENETIC STRINGS-THIRD SET:'
+C        WRITE(*,*)'***********************************'
         DO I1=1,TOP3
          WRITE(*,135)I1,STRING(I1,21),STRING(I1,22),
      $STRING(I1,23),STRING(I1,24),STRING(I1,25),STRING(I1,26),
      $STRING(I1,27),STRING(I1,28),STRING(I1,29),STRING(I1,30)
         ENDDO
-        WRITE(*,*)'***********************************'
-        WRITE(*,*)'THE ORIGINAL GENETIC STRINGS-FOURTH SET:'
-        WRITE(*,*)'***********************************'
+C        WRITE(*,*)'***********************************'
+C        WRITE(*,*)'THE ORIGINAL GENETIC STRINGS-FOURTH SET:'
+C        WRITE(*,*)'***********************************'
         DO I1=1,TOP3
          WRITE(*,135)I1,STRING(I1,31),STRING(I1,32),
      $STRING(I1,33),STRING(I1,34),STRING(I1,35),STRING(I1,36)
@@ -1050,20 +1050,20 @@ C****************************************************
         DO I0=1,POPULATION
          WRITE(*,*)'GENERATION,STRING=',GENERATION,I0
          IF(NOFLAG(I0) .EQ. 1)THEN
-          WRITE(*,*)'RETAINED PARENT-NO NEED TO RECOMPUTE'
+C          WRITE(*,*)'RETAINED PARENT-NO NEED TO RECOMPUTE'
          ENDIF
          IF(NOFLAG(I0) .EQ. 0)THEN
          DO I2=1,N
            TPARA(I2)=STRING(I0,I2)
          ENDDO
-         WRITE(*,*)'SENDING'
+C         WRITE(*,*)'SENDING'
 
 C@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
       CALL   PASS(TPARA,DESPOTENTIAL,DESIRED,DESWEIGHT,DESEXPO,
      $DESCOST,OVERRIDE,PRINTSCREEN,GENERATION)
 C@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-         WRITE(*,*)'RECEIVING'
+C         WRITE(*,*)'RECEIVING'
          FITNESS(I0)=DESPOTENTIAL
          ENDIF
         ENDDO
@@ -1097,7 +1097,7 @@ C****************************************************
           TEMPFITNESS(RANK(I1))=FITNESS(I1)
          ENDDO
 
-        WRITE(*,*)'TOP MOST FIT GENETICSTRINGS+PLUS COST:'
+C        WRITE(*,*)'TOP MOST FIT GENETICSTRINGS+PLUS COST:'
         DO I1=1,TOP3
        WRITE(*,134)I1,TEMPSTRING(I1,1),TEMPSTRING(I1,2),
      $TEMPSTRING(I1,3),TEMPSTRING(I1,4),
@@ -1154,160 +1154,160 @@ C****************************************************
 C      THE BEST GENE EMERGES
 C****************************************************
 
-         WRITE(*,*)'SENDING FOR THE BEST GENE'
+C         WRITE(*,*)'SENDING FOR THE BEST GENE'
 
-        WRITE(*,*)'TOP MOST FIT GENETICS STRINGS:'
-        WRITE(*,*)TPARA(1),TPARA(2),
-     $TPARA(3),TPARA(4),
-     $TPARA(5),TPARA(6),
-     $TPARA(7),TPARA(8),
-     $TPARA(9),TPARA(10),
-     $TPARA(11),TPARA(12),
-     $TPARA(13),TPARA(14),
-     $TPARA(15),TPARA(16),
-     $TPARA(17),TPARA(18),
-     $TPARA(19),TPARA(20),
-     $TPARA(21),TPARA(22),
-     $TPARA(23),TPARA(24),
-     $TPARA(25),TPARA(26),
-     $TPARA(27),TPARA(28),
-     $TPARA(29),TPARA(30),
-     $TPARA(31),TPARA(32),
-     $TPARA(33),TPARA(34),
-     $TPARA(35),TPARA(36)
+C        WRITE(*,*)'TOP MOST FIT GENETICS STRINGS:'
+C        WRITE(*,*)TPARA(1),TPARA(2),
+C     $TPARA(3),TPARA(4),
+C     $TPARA(5),TPARA(6),
+C     $TPARA(7),TPARA(8),
+C     $TPARA(9),TPARA(10),
+C     $TPARA(11),TPARA(12),
+C     $TPARA(13),TPARA(14),
+C     $TPARA(15),TPARA(16),
+C     $TPARA(17),TPARA(18),
+C     $TPARA(19),TPARA(20),
+C     $TPARA(21),TPARA(22),
+C     $TPARA(23),TPARA(24),
+C     $TPARA(25),TPARA(26),
+C     $TPARA(27),TPARA(28),
+C     $TPARA(29),TPARA(30),
+C     $TPARA(31),TPARA(32),
+C     $TPARA(33),TPARA(34),
+C     $TPARA(35),TPARA(36)
 
-        WRITE(*,*)'RECEIVING INFO FOR THE BEST GENE'
+C        WRITE(*,*)'RECEIVING INFO FOR THE BEST GENE'
 C@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
       CALL PASS(TPARA,DESPOTENTIAL,DESIRED,DESWEIGHT,DESEXPO,
      $DESCOST,OVERRIDE,PRINTSCREEN,GENERATION)
 C@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-        WRITE(*,*)'DELIVERS THIS COST=',DESPOTENTIAL
+C        WRITE(*,*)'DELIVERS THIS COST=',DESPOTENTIAL
 
 
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'GENERATION NUMBER:',GENERATION
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'BEST GENE DELIVERS THE FOLLOWING RESPONSE:'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 1=',TEMPSTRING(1,1)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 2=',TEMPSTRING(1,2)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 3=',TEMPSTRING(1,3)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 4=',TEMPSTRING(1,4)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 5=',TEMPSTRING(1,5)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 6=',TEMPSTRING(1,6)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 7=',TEMPSTRING(1,7)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 8=',TEMPSTRING(1,8)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 9=',TEMPSTRING(1,9)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 10=',TEMPSTRING(1,10)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 11=',TEMPSTRING(1,11)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 12=',TEMPSTRING(1,12)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 13=',TEMPSTRING(1,13)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 14=',TEMPSTRING(1,14)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 15=',TEMPSTRING(1,15)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 16=',TEMPSTRING(1,16)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 17=',TEMPSTRING(1,17)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 18=',TEMPSTRING(1,18)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 19=',TEMPSTRING(1,19)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 20=',TEMPSTRING(1,20)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 21=',TEMPSTRING(1,21)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 22=',TEMPSTRING(1,22)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 23=',TEMPSTRING(1,23)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 24=',TEMPSTRING(1,24)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 25=',TEMPSTRING(1,25)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 26=',TEMPSTRING(1,26)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 27=',TEMPSTRING(1,27)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 28=',TEMPSTRING(1,28)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 29=',TEMPSTRING(1,29)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 30=',TEMPSTRING(1,30)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 31=',TEMPSTRING(1,31)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 32=',TEMPSTRING(1,32)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 33=',TEMPSTRING(1,33)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 34=',TEMPSTRING(1,34)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 35=',TEMPSTRING(1,35)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'PARAMETER 36=',TEMPSTRING(1,36)
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'***************************************'
-        WRITE(86,133)GENERATION,TEMPFITNESS(1),AVFITNESS/RTOP2
-        WRITE(*,*)'***************************************'
-        WRITE(*,*)'STATS:GENERATION,TOPFITNESS,AVFITNESS='
-        WRITE(*,*)GENERATION,TEMPFITNESS(1),AVFITNESS/RTOP2
-        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'GENERATION NUMBER:',GENERATION
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'BEST GENE DELIVERS THE FOLLOWING RESPONSE:'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 1=',TEMPSTRING(1,1)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 2=',TEMPSTRING(1,2)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 3=',TEMPSTRING(1,3)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 4=',TEMPSTRING(1,4)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 5=',TEMPSTRING(1,5)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 6=',TEMPSTRING(1,6)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 7=',TEMPSTRING(1,7)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 8=',TEMPSTRING(1,8)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 9=',TEMPSTRING(1,9)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 10=',TEMPSTRING(1,10)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 11=',TEMPSTRING(1,11)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 12=',TEMPSTRING(1,12)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 13=',TEMPSTRING(1,13)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 14=',TEMPSTRING(1,14)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 15=',TEMPSTRING(1,15)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 16=',TEMPSTRING(1,16)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 17=',TEMPSTRING(1,17)
+C        WRITE(*,*)'***************************************'
+C       WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 18=',TEMPSTRING(1,18)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 19=',TEMPSTRING(1,19)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 20=',TEMPSTRING(1,20)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 21=',TEMPSTRING(1,21)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 22=',TEMPSTRING(1,22)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 23=',TEMPSTRING(1,23)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 24=',TEMPSTRING(1,24)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 25=',TEMPSTRING(1,25)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 26=',TEMPSTRING(1,26)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 27=',TEMPSTRING(1,27)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 28=',TEMPSTRING(1,28)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 29=',TEMPSTRING(1,29)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 30=',TEMPSTRING(1,30)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 31=',TEMPSTRING(1,31)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 32=',TEMPSTRING(1,32)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 33=',TEMPSTRING(1,33)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 34=',TEMPSTRING(1,34)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 35=',TEMPSTRING(1,35)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'PARAMETER 36=',TEMPSTRING(1,36)
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'***************************************'
+C        WRITE(86,133)GENERATION,TEMPFITNESS(1),AVFITNESS/RTOP2
+C        WRITE(*,*)'***************************************'
+C        WRITE(*,*)'STATS:GENERATION,TOPFITNESS,AVFITNESS='
+C        WRITE(*,*)GENERATION,TEMPFITNESS(1),AVFITNESS/RTOP2
+C        WRITE(*,*)'***************************************'
 
         WRITE(55,*)'GENERATION NUMBER:',GENERATION
         WRITE(55,*)'PARAMETER 1=',TEMPSTRING(1,1)
         WRITE(55,*)'PARAMETER 2=',TEMPSTRING(1,2)
-        WRITE(55,*)'PARAMETER 3=',TEMPSTRING(1,3)
+       WRITE(55,*)'PARAMETER 3=',TEMPSTRING(1,3)
         WRITE(55,*)'PARAMETER 4=',TEMPSTRING(1,4)
         WRITE(55,*)'PARAMETER 5=',TEMPSTRING(1,5)
         WRITE(55,*)'PARAMETER 6=',TEMPSTRING(1,6)
@@ -1327,7 +1327,7 @@ C@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         WRITE(55,*)'PARAMETER 20=',TEMPSTRING(1,20)
         WRITE(55,*)'PARAMETER 21=',TEMPSTRING(1,21)
         WRITE(55,*)'PARAMETER 22=',TEMPSTRING(1,22)
-        WRITE(55,*)'PARAMETER 23=',TEMPSTRING(1,23)
+       WRITE(55,*)'PARAMETER 23=',TEMPSTRING(1,23)
         WRITE(55,*)'PARAMETER 24=',TEMPSTRING(1,24)
         WRITE(55,*)'PARAMETER 25=',TEMPSTRING(1,25)
         WRITE(55,*)'PARAMETER 26=',TEMPSTRING(1,26)
@@ -1492,8 +1492,8 @@ C****************************************************************
          DO I1=1,POPULATION
           NOFLAG(I1)=0
          ENDDO
-         WRITE(*,*)'FOR NEXT ROUND READAPTING SEARCH'
-         WRITE(*,*)'INTERVAL AROUND DESIGN VECTOR='
+C         WRITE(*,*)'FOR NEXT ROUND READAPTING SEARCH'
+C         WRITE(*,*)'INTERVAL AROUND DESIGN VECTOR='
          DO I2=1,N
           WRITE(*,*)TEMPSTRING(1,I2)
          ENDDO
@@ -1549,72 +1549,72 @@ CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
         ENDIF
        ENDIF
 
-        WRITE(*,*)'********************************************'
-        WRITE(*,*)'NEW-ROUND: CHILDREN GO FIRST'
-        WRITE(*,*)'********************************************'
-       WRITE(*,*)'NEW GENES GOING FORWARD:GENE NUM.AND STRING-1-10 SET'
-        WRITE(*,*)'********************************************'
-        DO I1=1,TOP3
-         WRITE(*,134)I1,STRING(I1,1),STRING(I1,2),STRING(I1,3),
-     $STRING(I1,4),STRING(I1,5),STRING(I1,6),STRING(I1,7),STRING(I1,8),
-     $STRING(I1,9),STRING(I1,10)
-        ENDDO
-        WRITE(*,*)'********************************************'
-       WRITE(*,*)'NEW GENES GOING FORWARD:GENE NUM.AND STRING-11-20 SET'
-        WRITE(*,*)'********************************************'
-        DO I1=1,TOP3
-         WRITE(*,134)I1,STRING(I1,11),STRING(I1,12),STRING(I1,13),
-     $STRING(I1,14),STRING(I1,15),STRING(I1,16),STRING(I1,17)
-     $,STRING(I1,18),STRING(I1,19),STRING(I1,20)
-        ENDDO
-        WRITE(*,*)'********************************************'
-       WRITE(*,*)'NEW GENES GOING FORWARD:GENE NUM.AND STRING-21-30 SET'
-        WRITE(*,*)'********************************************'
-        DO I1=1,TOP3
-         WRITE(*,135)I1,STRING(I1,21),STRING(I1,22),
-     $STRING(I1,23),STRING(I1,24),STRING(I1,25),STRING(I1,26),
-     $STRING(I1,27),STRING(I1,28),STRING(I1,29),STRING(I1,30)
-        ENDDO
-        WRITE(*,*)'***********************************'
-       WRITE(*,*)'NEW GENES GOING FORWARD:GENE NUM.AND STRING-31-36 SET'
-        WRITE(*,*)'***********************************'
-        DO I1=1,TOP3
-         WRITE(*,135)I1,STRING(I1,31),STRING(I1,32),
-     $STRING(I1,33),STRING(I1,34),STRING(I1,35),STRING(I1,36)
-        ENDDO
+C        WRITE(*,*)'********************************************'
+C        WRITE(*,*)'NEW-ROUND: CHILDREN GO FIRST'
+C        WRITE(*,*)'********************************************'
+C       WRITE(*,*)'NEW GENES GOING FORWARD:GENE NUM.AND STRING-1-10 SET'
+C        WRITE(*,*)'********************************************'
+C       DO I1=1,TOP3
+C         WRITE(*,134)I1,STRING(I1,1),STRING(I1,2),STRING(I1,3),
+C    $STRING(I1,4),STRING(I1,5),STRING(I1,6),STRING(I1,7),STRING(I1,8),
+C    $STRING(I1,9),STRING(I1,10)
+C       ENDDO
+C        WRITE(*,*)'********************************************'
+C       WRITE(*,*)'NEW GENES GOING FORWARD:GENE NUM.AND STRING-11-20 SET'
+C        WRITE(*,*)'********************************************'
+C       DO I1=1,TOP3
+C         WRITE(*,134)I1,STRING(I1,11),STRING(I1,12),STRING(I1,13),
+C    $STRING(I1,14),STRING(I1,15),STRING(I1,16),STRING(I1,17)
+C    $,STRING(I1,18),STRING(I1,19),STRING(I1,20)
+C       ENDDO
+C       WRITE(*,*)'********************************************'
+C       WRITE(*,*)'NEW GENES GOING FORWARD:GENE NUM.AND STRING-21-30 SET'
+C        WRITE(*,*)'********************************************'
+C       DO I1=1,TOP3
+C         WRITE(*,135)I1,STRING(I1,21),STRING(I1,22),
+C    $STRING(I1,23),STRING(I1,24),STRING(I1,25),STRING(I1,26),
+C    $STRING(I1,27),STRING(I1,28),STRING(I1,29),STRING(I1,30)
+C       ENDDO
+C        WRITE(*,*)'***********************************'
+C       WRITE(*,*)'NEW GENES GOING FORWARD:GENE NUM.AND STRING-31-36 SET'
+C        WRITE(*,*)'***********************************'
+C       DO I1=1,TOP3
+C         WRITE(*,135)I1,STRING(I1,31),STRING(I1,32),
+C    $STRING(I1,33),STRING(I1,34),STRING(I1,35),STRING(I1,36)
+C       ENDDO
 
 
 
-        IF(KEEP .EQ. 0)THEN
-         WRITE(*,*)'***************************************'
-         WRITE(*,*)POPULATION-TOP,' BAD GENES BEING ELIMINATED'
-         WRITE(*,*)'********************************************'
-         WRITE(*,*)'***************************************'
-         WRITE(*,*)POPULATION-TOP,' NEW GENES ADDED TO POPULATION'
-         WRITE(*,*)'********************************************'
-        ENDIF
-        IF(KEEP .EQ. 1)THEN
-         WRITE(*,*)'***************************************'
-         WRITE(*,*)POPULATION-TOP,' BAD GENES BEING ELIMINATED'
-         WRITE(*,*)'********************************************'
-         WRITE(*,*)'***************************************'
-         WRITE(*,*)TOP,'PARENT GENES GOING FORWARD',TOP/2,'PAIRS'
-         WRITE(*,*)'********************************************'
-         WRITE(*,*)'***************************************'
-         WRITE(*,*)CHILDREN,'CHILDREN GENES BEING ADDED TO POP'
-         WRITE(*,*)'********************************************'
-         WRITE(*,*)'***************************************'
-         WRITE(*,*)POPULATION-TOP-CHILDREN,'NEW GENES ADDED TO POP'
-         WRITE(*,*)'********************************************'
-         WRITE(*,*)'***************************************'
-         WRITE(*,*)POPULATION,'IN POPULATION'
-         WRITE(*,*)'********************************************'
-        ENDIF
+C       IF(KEEP .EQ. 0)THEN
+C         WRITE(*,*)'***************************************'
+C         WRITE(*,*)POPULATION-TOP,' BAD GENES BEING ELIMINATED'
+C         WRITE(*,*)'********************************************'
+C         WRITE(*,*)'***************************************'
+C         WRITE(*,*)POPULATION-TOP,' NEW GENES ADDED TO POPULATION'
+C         WRITE(*,*)'********************************************'
+C       ENDIF
+C       IF(KEEP .EQ. 1)THEN
+C         WRITE(*,*)'***************************************'
+C         WRITE(*,*)POPULATION-TOP,' BAD GENES BEING ELIMINATED'
+C         WRITE(*,*)'********************************************'
+C         WRITE(*,*)'***************************************'
+C         WRITE(*,*)TOP,'PARENT GENES GOING FORWARD',TOP/2,'PAIRS'
+C         WRITE(*,*)'********************************************'
+C         WRITE(*,*)'***************************************'
+C         WRITE(*,*)CHILDREN,'CHILDREN GENES BEING ADDED TO POP'
+C         WRITE(*,*)'********************************************'
+C         WRITE(*,*)'***************************************'
+C         WRITE(*,*)POPULATION-TOP-CHILDREN,'NEW GENES ADDED TO POP'
+C         WRITE(*,*)'********************************************'
+C         WRITE(*,*)'***************************************'
+C         WRITE(*,*)POPULATION,'IN POPULATION'
+C         WRITE(*,*)'********************************************'
+C       ENDIF
 
-         DO I2=1,N
-          WRITE(*,*)'VARIABLE',I2,'UPPER, LOWER BOUNDS,UP-LOW=',
-     $UPBOUND(I2),LOWBOUND(I2),UPBOUND(I2)-LOWBOUND(I2)
-         ENDDO
+C        DO I2=1,N
+C          WRITE(*,*)'VARIABLE',I2,'UPPER, LOWER BOUNDS,UP-LOW=',
+C    $UPBOUND(I2),LOWBOUND(I2),UPBOUND(I2)-LOWBOUND(I2)
+C        ENDDO
         
         ENDDO
 
@@ -1694,7 +1694,7 @@ CCCCCCCCCCCCCCCCCCCCCCCCC
      $,1X,F16.6,1X,F16.6,1X,F16.6,1X,F16.6,1X,F16.6,1X,F16.6,1X,F16.9
      $,1X,F16.6,1X,F16.6,1X,F16.6,1X,F16.6)
 
-      WRITE(*,*)'SOLVING'
+C      WRITE(*,*)'SOLVING'
 
 CCCCCCCCCCCCCCCCC
 C      BASELINE DESIGN PARAMETERS
@@ -1804,7 +1804,7 @@ C    SCORE 1 REPRESENTS THE TOTALCOST
 CCCCCCCCCC
          DESCOST(1)=DABS(SCORE(1)-DESIRED(1))
 
-       WRITE(*,*)'DECOST(1)=',DESCOST(1)
+C       WRITE(*,*)'DECOST(1)=',DESCOST(1)
 
 
 CCCCCCCCCC
@@ -1812,7 +1812,7 @@ C    SCORE 2 REPRESENTS ...
 CCCCCCCCCC
          DESCOST(2)=DABS(SCORE(2)-DESIRED(2))
 
-       WRITE(*,*)'DECOST(2)=',DESCOST(2)
+C       WRITE(*,*)'DECOST(2)=',DESCOST(2)
 
 
          DESPOTENTIAL=
@@ -1821,7 +1821,7 @@ CCCCCCCCCC
 
        WRITE(88,123)GENERATION,DESPOTENTIAL,DESCOST(1),DESCOST(2)
 
-       WRITE(*,*)'TOTAL WEIGHTED DESIGN COST=',DESPOTENTIAL
+C       WRITE(*,*)'TOTAL WEIGHTED DESIGN COST=',DESPOTENTIAL
 
        RETURN
        END
@@ -2668,7 +2668,7 @@ CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 
        TIME=0.0D0
        DO WHILE(TIME .LE. TIMELIMIT)
-        WRITE(*,*)'TIME=',TIME/TIMELIMIT
+C        WRITE(*,*)'TIME=',TIME/TIMELIMIT
 
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 C    WITH NO RAY REFLECTIONS
@@ -3126,29 +3126,29 @@ CCCCCCCCCCCCCC
         ENDDO
         RLIGHTS=RAYCOUNT
 
-        WRITE(*,*)'RAYS HITTING TARGET=',RCOUNT
-        WRITE(*,*)'TOTAL RAYS=',RLIGHTS
-        WRITE(*,*)'FRACTION OF RAYS HITTING TARGET=',RCOUNT/RLIGHTS
-        WRITE(*,*)'TOTAL NUMBER OF REFLECTIONS=',REF
+C        WRITE(*,*)'RAYS HITTING TARGET=',RCOUNT
+C        WRITE(*,*)'TOTAL RAYS=',RLIGHTS
+C        WRITE(*,*)'FRACTION OF RAYS HITTING TARGET=',RCOUNT/RLIGHTS
+C        WRITE(*,*)'TOTAL NUMBER OF REFLECTIONS=',REF
         SUM=0.0D0
         DO I=1,NTARGETS
          SUM=TARGETABSORB(I)+SUM
         ENDDO
-        WRITE(*,*)'FRACTION OF POWER ABSORBED BY PODS=',
-     $SUM/(
-     $TOTALFACEPOWERX1MINUS*X1MINUSON+
-     $TOTALFACEPOWERX1PLUS*X1PLUSON+
-     $TOTALFACEPOWERX2MINUS*X2MINUSON+
-     $TOTALFACEPOWERX2PLUS*X2PLUSON+
-     $TOTALFACEPOWERX3MINUS*X3MINUSON+
-     $TOTALFACEPOWERX3PLUS*X3PLUSON)
-      WRITE(*,*)'POWER USAGE EFFECTIVENESS BY PODS=',
-     $(TOTALFACEPOWERX1MINUS*X1MINUSON+
-     $TOTALFACEPOWERX1PLUS*X1PLUSON+
-     $TOTALFACEPOWERX2MINUS*X2MINUSON+
-     $TOTALFACEPOWERX2PLUS*X2PLUSON+
-     $TOTALFACEPOWERX3MINUS*X3MINUSON+
-     $TOTALFACEPOWERX3PLUS*X3PLUSON)/SUM
+C        WRITE(*,*)'FRACTION OF POWER ABSORBED BY PODS=',
+C    $SUM/(
+C    $TOTALFACEPOWERX1MINUS*X1MINUSON+
+C    $TOTALFACEPOWERX1PLUS*X1PLUSON+
+C    $TOTALFACEPOWERX2MINUS*X2MINUSON+
+C    $TOTALFACEPOWERX2PLUS*X2PLUSON+
+C    $TOTALFACEPOWERX3MINUS*X3MINUSON+
+C    $TOTALFACEPOWERX3PLUS*X3PLUSON)
+C      WRITE(*,*)'POWER USAGE EFFECTIVENESS BY PODS=',
+C    $(TOTALFACEPOWERX1MINUS*X1MINUSON+
+C    $TOTALFACEPOWERX1PLUS*X1PLUSON+
+C    $TOTALFACEPOWERX2MINUS*X2MINUSON+
+C    $TOTALFACEPOWERX2PLUS*X2PLUSON+
+C    $TOTALFACEPOWERX3MINUS*X3MINUSON+
+C    $TOTALFACEPOWERX3PLUS*X3PLUSON)/SUM
 
       TOTALCOST=1.0D0-
      $SUM/(
