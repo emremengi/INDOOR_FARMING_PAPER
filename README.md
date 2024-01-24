@@ -1,14 +1,11 @@
-**Overview** <br />
-
 **Introduction** <br />
+In the face of a changing climate and a rising number of "food deserts" in both rural and urban areas, there is a demand to supply fresh produce year-round to communities at the end of the traditional agriculture supply chain. Vertical indoor farming is a promising mode of next-generation agriculture that boasts reduced water and pesticide usage, improved yields, more consistent quality, year-round cultivation, and cheaper transportation and harvesting costs. Indoor farms can rival industrial greenhouses in size, but small-scale "pod farms" can be deployed to smaller communities and areas where large swaths of land are either unavailable or too costly. These pods are often the size of shipping containers with their temperature, humidity, and plant nutrient supply carefully controlled. Plants inside the pods are grown hydroponically with light supplied by panels of LEDs and, thus, this mode of farming is fundamentally different from greenhouse farming. Many indoor farming pods have recently become commercially available claiming high energy efficiency, but little analysis and optimization work has been done to prove these claims. To drive innovation in the design of these physical systems, we have developed a digital-twin and genomic optimization framework for the optical design of vertical indoor farming pods. We model a completely enclosed indoor farming pod with plants in the three mutually-orthogonal planes and illuminated by LED "walls." We employ ray-tracing methods and a genetic algorithm to determine the LED source tube area size, beam aperture spread, and power requirements for maximal power absorption by the plants.
 
 **Results** <br />
 
-**Usage** <br />
+Optimal indoor farming system light pulse snapshots. Ray color added for visual clarity. Colorbar added to show differential power absorption by plants. Red corresponds to higher power absorption and blue to lower power absorption
 
 **Setup** <br />
-
-**Running** <br />
 There are two python versions, one C version, and one Fortran version of this project. For results consistent with those in the publication "A digital-twin and rapid optimization framework for optical design of indoor farming systems," we recommend running the Fortran vrsion. <br />
 
 To run Fortran code, be sure to check your system meets the following requirements.
@@ -25,6 +22,7 @@ $ source /opt/intel/oneapi/setvars.sh intel64 <br />
 $ ifort {filename} -lm -03 -o {object filename} <br />
 $ ./{object filename} <br />
 
+**Running** <br />
 Now that you know how to run any Fortran file, to **run the indoor farming "lightbox" model by itself,** <br />
 1. Navigate to "INDOOR_FARMING_PAPER/Codebase/FORTRAN/MODEL/"
 2. Identify the file "PURE-RAY-LIGHTBOX.f" with the latest version number e.g. V13 is later than V12. Then, where <XX> is the latest version number, run <br />
