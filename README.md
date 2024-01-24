@@ -6,7 +6,7 @@ In the face of a changing climate and a rising number of "food deserts" in both 
 Optimal indoor farming system light pulse snapshots. Ray color added for visual clarity. Colorbar added to show differential power absorption by plants. Red corresponds to higher power absorption and blue to lower power absorption <br />
 
 ![GA Plot](GAplot.png) <br />
-Cost function evolution over 150 generations. The plots shows the cost of the best performing design (red) and the average cost of the entire population (green) as a function of successive generations. The GA was allowed to re-adapt every 10 generations. The lowest cost in generation 1 was ~0.2826 and was reduced to ~0.1531 by generation 150. This is a reduction of ~45.82%. <br />
+Cost function evolution over 150 generations. The plots shows the cost of the best performing design (red) and the average cost of the entire population (green) as a function of successive generations. The Genetic Algorithm (GA) was allowed to re-adapt every 10 generations. The lowest cost in generation 1 was ~0.2826 and was reduced to ~0.1531 by generation 150. This is a reduction of ~45.82%. <br />
 
 **Setup** <br />
 There are two python versions, one C version, and one Fortran version of this project. For results consistent with those in the publication "A digital-twin and rapid optimization framework for optical design of indoor farming systems," we recommend running the Fortran vrsion. <br />
@@ -35,31 +35,55 @@ Now that you know how to run any Fortran file, to **run the indoor farming "ligh
 6. Using your visualization software of choice (we use Tecplot to produce the plots in the associated paper), you can visualize the data in PATH.dat. <br />
 
 In PATH.dat, each line represents the data in a time step. The columns represent the following data: <br />
-1. Column 1: **TODO** <br />
-2. Column 2: **TODO** <br />
-3. Column 3: **TODO** <br />
-4. Column 4: **TODO** <br />
-5. Column 5: **TODO** <br />
-6. Column 6: **TODO** <br />
-7. Column 7: **TODO** <br />
-8. Column 8: **TODO** <br />
-9. Column 9: **TODO** <br />
-10. Column 10: **TODO** <br />
-11. Column 11: **TODO** <br />
-12. Column 11: **TODO** <br />
-12. Column 12: **TODO** <br />
+Column 1: **TODO** <br />
+Column 2: **TODO** <br />
+Column 3: **TODO** <br />
+Column 4: **TODO** <br />
+Column 5: **TODO** <br />
+Column 6: **TODO** <br />
+Column 7: **TODO** <br />
+Column 8: **TODO** <br />
+Column 9: **TODO** <br />
+Column 10: **TODO** <br />
+Column 11: **TODO** <br />
+Column 11: **TODO** <br />
+Column 12: **TODO** <br />
 
-If you desire to edit the model file ("PURE-RAY-LIGHTBOX.f"), we only recommend editing in a few locations:
+If you desire to edit the model file ("PURE-RAY-LIGHTBOX.f"), we only recommend editing in a few locations (line numbers based on v13): <br />
+Line 76: MOVIE=1 to produce movie, MOVIE=0 to run faster and save data storage. <br />
+Lines 80-85: 1 to activate a rack, 0 to deactivate. <br />
+Lines 91-108: Aperature parameters, should have values between 0-1. <br />
+Lines 114-125: Source tube parameters, must be greater than zero, though we recommend between 0-3. <br />
+Lines 131-136: Total face power parameters, must be greater than zero, though we recommend between 0-10. <br />
 
 Now that you know how to run the indoor farming "lightbox" model by itself, to **run the optimization of the indoor farm optical parameters,** <br />
 1. Navigate to "INDOOR_FARMING_PAPER/Codebase/FORTRAN/GA/"
 2. Identify the file "MACHINE-LEARNING-PURE-RAY-LIGHTBOX.f" with the latest version number e.g. V13 is later than V12. Then, where <XX> is the latest version number, run <br />
 3. ifort MACHINE-LEARNING-PURE-RAY-LIGHTBOX-V<XX>.f -lm -03 -o MACHINE-LEARNING-PURE-RAY-LIGHTBOX-V<XX>.o <br />
 4. ./MACHINE-LEARNING-PURE-RAY-LIGHTBOX-V<XX>.o <br />
-5. After the executable file runs, 
+5. After the executable file runs, a file "PATH.dat" will be created. <br />
+6. Using your visualization software of choice (we use Tecplot to produce the plots in the associated paper), you can visualize the data in PATH.dat. <br />
+7. **TODO** Were there more steps than this ???
   
+If you desire to edit the model file ("MACHINE-LEARNING-PURE-RAY-LIGHTBOX.f"), we only recommend editing in a few locations (line numbers based on v15): <br />
+Line 267: PRINTSCREEN=0 to suppress prints to console while running (recommended when running optimization). PRINTSCREEN=1 to allow prints to console. <br />
+Line 268: OVERRIDE=0 to suppress creation of PATH.dat for a movie (recommended when running optimization). OVERRIDE=1 to create PATH.dat for a movie. <br />
+Line 304: Change Genetic Algorithm (GA) stopping tolerance. <br />
+Lines 320-337: The intial values for aperatures. <br />
+Lines 341-352: The initial values for source tubes. <br />
+Lines 356-361: The initial values for face power. <br />
+Line 367-369: Toggles for whether or not the GA re-adapts every few generations. <br />
+Line 430: KEEP=1 to retain parents in new generations. KEEP=0 to discard parents. <br />
+Lines 460-477: Upper search bounds for aperatures (lower bound for all is 0). <br />
+Lines 483-494: Upper search bounds for source tubes (lower bound for all is 0).<br />
+Lines 500-505: Upper search bounds for face power (lower bound for all is 0). <br />
 
+**A Note on Notation**
+![Target Planes](target-planes.png) <br />
+We call the planes in which plant racks exist the "target planes." The planes targeted in the paper associated with this repo are planes x1x2, x1x3, and x2x3, which are visualized in the drawing above. <br />
 
+![Source Tubes](source-tube-guide.png) <br />
+Each source tube exists on one wall of the indoor farming pod. We refer to the source tube dimensions first according to their surface normal and second according their measurements along the dimensions defining the wall to which they belong. For example, the wall with surface normal +x3 has one source tube on it. That source tube covers some area in the x1 direction and some in the x2 direction, covering some area on the wall defined by surface normal +x3. In the code, the variables FORPLUSX3SOURCETUBEX1 and FORPLUSX3SOURCETUBEX2 define the area covered by the source tube. <br />
 
 **Authors** <br />
 Emre Mengi <br />
