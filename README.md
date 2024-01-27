@@ -16,7 +16,7 @@ To run Fortran code, be sure to check your system meets the following requiremen
 2. Download install files from here: https://www.intel.com/content/www/us/en/developer/articles/news/free-intel-software-developer-tools.html <br />
 3. Install “Base Kit” and “HPC Kit” to get everything needed <br />
 4. Specify compiler location by following these instructions: https://www.intel.com/content/www/us/en/docs/fortran-compiler/developer-guide-reference/2023-0/specifying-the-location-of-compiler-components.html <br />
-5. In a terminal window, run ```source /<install-dir>/setvars.sh intel64``` e.g., if the install directory is /opt/intel/oneapi/, run: source ```/opt/intel/oneapi/setvars.sh intel64``` <br />
+5. In a terminal window, run: ```source /<install-dir>/setvars.sh intel64``` e.g., if the install directory is /opt/intel/oneapi/, run: ```source /opt/intel/oneapi/setvars.sh intel64``` <br />
 6. (Optional) If you want this command to always run everytime you open the terminal you can add that line to your ~/.bash_profile or ~/.zshrc (whichever file is sourced in your terminal login shell <br />
 
 Once you know your system meets the above requirements, follow the steps below to run any Fortran code in the terminal. <br />
@@ -31,8 +31,8 @@ $ ./{object filename} <br />
 Now that you know how to run any Fortran file, to **run the indoor farming "lightbox" model by itself,** <br />
 1. Navigate to "INDOOR_FARMING_PAPER/Codebase/FORTRAN/MODEL/"
 2. Identify the file "PURE-RAY-LIGHTBOX.f" with the latest version number e.g. V13 is later than V12. Then, where <XX> is the latest version number, run <br />
-3. ifort PURE-RAY-LIGHTBOX-V<XX>.f -lm -03 -o PURE-RAY-LIGHTBOX-V<XX>.o <br />
-4. ./PURE-RAY-LIGHTBOX-V<XX>.o <br />
+3. ```ifort PURE-RAY-LIGHTBOX-V<XX>.f -lm -03 -o PURE-RAY-LIGHTBOX-V<XX>.o``` <br />
+4. ```./PURE-RAY-LIGHTBOX-V<XX>.o <br />```
 5. After the executable file runs, a file "PATH.dat" will be created. <br />
 6. Using your visualization software of choice (we use Tecplot to produce the plots in the associated paper), you can visualize the data in PATH.dat. <br />
 
@@ -61,11 +61,11 @@ Lines 131-136: Total face power parameters, must be greater than zero, though we
 Now that you know how to run the indoor farming "lightbox" model by itself, to **run the optimization of the indoor farm optical parameters,** <br />
 1. Navigate to "INDOOR_FARMING_PAPER/Codebase/FORTRAN/GA/"
 2. Identify the file "MACHINE-LEARNING-PURE-RAY-LIGHTBOX.f" with the latest version number e.g. V13 is later than V12. Then, where <XX> is the latest version number, run <br />
-3. ifort MACHINE-LEARNING-PURE-RAY-LIGHTBOX-V<XX>.f -lm -03 -o MACHINE-LEARNING-PURE-RAY-LIGHTBOX-V<XX>.o <br />
-4. ./MACHINE-LEARNING-PURE-RAY-LIGHTBOX-V<XX>.o <br />
+3. ```ifort MACHINE-LEARNING-PURE-RAY-LIGHTBOX-V<XX>.f -lm -03 -o MACHINE-LEARNING-PURE-RAY-LIGHTBOX-V<XX>.o``` <br />
+4. ```./MACHINE-LEARNING-PURE-RAY-LIGHTBOX-V<XX>.o``` <br />
 5. After the executable file runs, a file "PATH.dat" will be created. <br />
 6. Using your visualization software of choice (we use Tecplot to produce the plots in the associated paper), you can visualize the data in PATH.dat, which shows how energy is distributed within the optimized indoor farm settings given by the algorithm. <br />
-7. You can generate the cost function evolution plot (depicted above) by plotting the cost against the number of generations. Note that in the code, variable *MINIMUM* is the index of the string with the minimum cost. You can access the minimum cost value using *FITNESS(MINIMUM)*. <br />
+7. You can generate the cost function evolution plot (depicted above) by plotting the cost against the number of generations. Note that in the code, variable MINIMUM is the index of the string with the minimum cost. You can access the minimum cost value using FITNESS(MINIMUM). <br />
 8. **TODO** Were there more steps than this ???
   
 If you desire to edit the model file ("MACHINE-LEARNING-PURE-RAY-LIGHTBOX.f"), we only recommend editing in a few locations (line numbers based on v15): <br />
