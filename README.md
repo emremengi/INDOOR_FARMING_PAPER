@@ -9,7 +9,7 @@ Optimal indoor farming system light pulse snapshots. Ray color added for visual 
 Cost function evolution over 150 generations. The plots shows the cost of the best performing design (red) and the average cost of the entire population (green) as a function of successive generations. The Genetic Algorithm (GA) was allowed to re-adapt every 10 generations. The lowest cost in generation 1 was ~0.2826 and was reduced to ~0.1531 by generation 150. This is a reduction of ~45.82%. <br />
 
 **Setup** <br />
-There are two python versions, one C version, and one Fortran version of this project. For results consistent with those in the publication "A digital-twin and rapid optimization framework for optical design of indoor farming systems," we recommend running the Fortran vrsion. <br />
+There are two python versions, one C version, and one Fortran version of this project. For results consistent with those in the publication "A digital-twin and rapid optimization framework for optical design of indoor farming systems," we recommend running the Fortran version. <br />
 
 To run Fortran code, be sure to check your system meets the following requirements.
 1. Download and install compiler at https://www.scivision.dev/intel-oneapi-fortran-install/ <br />
@@ -35,19 +35,19 @@ Now that you know how to run any Fortran file, to **run the indoor farming "ligh
 6. Using your visualization software of choice (we use Tecplot to produce the plots in the associated paper), you can visualize the data in PATH.dat. <br />
 
 In PATH.dat, each line represents the data in a time step. The columns represent the following data: <br />
-Column 1: **TODO** <br />
-Column 2: **TODO** <br />
-Column 3: **TODO** <br />
-Column 4: **TODO** <br />
-Column 5: **TODO** <br />
-Column 6: **TODO** <br />
-Column 7: **TODO** <br />
-Column 8: **TODO** <br />
-Column 9: **TODO** <br />
-Column 10: **TODO** <br />
-Column 11: **TODO** <br />
-Column 11: **TODO** <br />
-Column 12: **TODO** <br />
+Column 1: ray x-position <br />
+Column 2: ray y-position <br />
+Column 3: ray z-position <br />
+Column 4: target radius <br />
+Column 5: normalized reflectance <br />
+Column 6: ray x-velocity <br />
+Column 7: ray y-velocity <br />
+Column 8: ray z-velocity <br />
+Column 9: power-weighted ray x-velocity <br />
+Column 10: power-weighted ray y-velocity <br />
+Column 11: power-weighted ray z-velocity <br />
+Column 11: unused variable <br />
+Column 12: ray wavelength <br />
 
 If you desire to edit the model file ("PURE-RAY-LIGHTBOX.f"), we only recommend editing in a few locations (line numbers based on v13): <br />
 Line 76: MOVIE=1 to produce movie, MOVIE=0 to run faster and save data storage. <br />
