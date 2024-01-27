@@ -17,7 +17,7 @@ To run Fortran code, be sure to check your system meets the following requiremen
 3. Install “Base Kit” and “HPC Kit” to get everything needed <br />
 4. Specify compiler location by following these instructions: https://www.intel.com/content/www/us/en/docs/fortran-compiler/developer-guide-reference/2023-0/specifying-the-location-of-compiler-components.html <br />
 5. In a terminal window, run: ```source /<install-dir>/setvars.sh intel64``` e.g., if the install directory is /opt/intel/oneapi/, run: ```source /opt/intel/oneapi/setvars.sh intel64``` <br />
-6. (Optional) If you want this command to always run everytime you open the terminal you can add that line to your ~/.bash_profile or ~/.zshrc (whichever file is sourced in your terminal login shell <br />
+6. (Optional) If you want this command to always run everytime you open the terminal you can add that line to your ~/.bash_profile or ~/.zshrc (whichever file is sourced in your terminal login shell) <br />
 
 Once you know your system meets the above requirements, follow the steps below to run any Fortran code in the terminal. <br />
 Guide to using the compiler from the command line: https://www.intel.com/content/www/us/en/docs/fortran-compiler/developer-guide-reference/2023-0/invoke-the-compiler.html <br /><br />
