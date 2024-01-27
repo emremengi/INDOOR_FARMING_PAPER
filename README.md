@@ -21,9 +21,11 @@ To run Fortran code, be sure to check your system meets the following requiremen
 
 Once you know your system meets the above requirements, follow the steps below to run any Fortran code in the terminal. <br />
 Guide to using the compiler from the command line: https://www.intel.com/content/www/us/en/docs/fortran-compiler/developer-guide-reference/2023-0/invoke-the-compiler.html <br /><br />
+```
 $ source /opt/intel/oneapi/setvars.sh intel64 <br />
 $ ifort {filename} -lm -03 -o {object filename} <br />
 $ ./{object filename} <br />
+```
 
 **Running** <br />
 Now that you know how to run any Fortran file, to **run the indoor farming "lightbox" model by itself,** <br />
