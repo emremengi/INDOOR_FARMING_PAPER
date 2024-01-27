@@ -62,9 +62,9 @@ Now that you know how to run the indoor farming "lightbox" model by itself, to *
 3. ifort MACHINE-LEARNING-PURE-RAY-LIGHTBOX-V<XX>.f -lm -03 -o MACHINE-LEARNING-PURE-RAY-LIGHTBOX-V<XX>.o <br />
 4. ./MACHINE-LEARNING-PURE-RAY-LIGHTBOX-V<XX>.o <br />
 5. After the executable file runs, a file "PATH.dat" will be created. <br />
-6. Using your visualization software of choice (we use Tecplot to produce the plots in the associated paper), you can visualize the data in PATH.dat, which is the optimized indoor farm settings given by the algorithm. <br />
-7. 
-7. **TODO** Were there more steps than this ???
+6. Using your visualization software of choice (we use Tecplot to produce the plots in the associated paper), you can visualize the data in PATH.dat, which shows how energy is distributed within the optimized indoor farm settings given by the algorithm. <br />
+7. You can generate the cost function evolution plot (depicted above) by plotting the cost against the number of generations. Note that in the code, variable MINIMUM is the index of the string with the minimum cost. You can access the minimum cost value using FITNESS(MINIMUM). <br />
+8. **TODO** Were there more steps than this ???
   
 If you desire to edit the model file ("MACHINE-LEARNING-PURE-RAY-LIGHTBOX.f"), we only recommend editing in a few locations (line numbers based on v15): <br />
 Line 267: PRINTSCREEN=0 to suppress prints to console while running (recommended when running optimization). PRINTSCREEN=1 to allow prints to console. <br />
