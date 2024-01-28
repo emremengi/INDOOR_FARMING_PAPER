@@ -63,10 +63,12 @@ Now that you know how to run the indoor farming "lightbox" model by itself, to *
 2. Identify the file "MACHINE-LEARNING-PURE-RAY-LIGHTBOX.f" with the latest version number e.g. V13 is later than V12. Then, where <XX> is the latest version number, run <br />
 3. ```ifort MACHINE-LEARNING-PURE-RAY-LIGHTBOX-V<XX>.f -lm -03 -o MACHINE-LEARNING-PURE-RAY-LIGHTBOX-V<XX>.o``` <br />
 4. ```./MACHINE-LEARNING-PURE-RAY-LIGHTBOX-V<XX>.o``` <br />
-5. After the executable file runs, a file "PATH.dat" will be created. <br />
+5. After the executable file runs, the files "PATH.dat", "OPTIMA.dat", "GENETICOUTPUT.dat", "GEN-STARTING-VALUES.dat", and "BROKEN-OPTIMA.dat" will be created. <br />
 6. Using your visualization software of choice (we use Tecplot to produce the plots in the associated paper), you can visualize the data in PATH.dat, which shows how energy is distributed within the optimized indoor farm settings given by the algorithm. <br />
 7. You can generate the cost function evolution plot (depicted above) by plotting the minimum cost at each generation against the number of generations. Note that in the code, variable MINIMUM is the index of the string with the minimum cost. You can access the minimum cost value using FITNESS(MINIMUM). <br />
-8.  The average cost evolution per generation is also generated along with the minimum cost per generation. The output file "OPTIMA.dat" will contain these values.   
+8.  The average cost evolution per generation is also generated along with the minimum cost per generation. The output file "GENETICOUTPUT.dat" will have the first column as the generation number, the second as the minimum cost, and the third as the average cost for each generation. 
+9.  The output file "OPTIMA.dat" will contain the parameter values for the best performing string for each generation.
+10. The output file "GEN-STARTING-VALUES.dat" will display the starting parameter values chosen for starting the genetic algorithm.    
   
 If you desire to edit the model file ("MACHINE-LEARNING-PURE-RAY-LIGHTBOX.f"), we only recommend editing in a few locations (line numbers based on v15): <br />
 Line 267: PRINTSCREEN=0 to suppress prints to console while running (recommended when running optimization). PRINTSCREEN=1 to allow prints to console. <br />
